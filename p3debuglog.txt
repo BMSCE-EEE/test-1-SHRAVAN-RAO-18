@@ -16,63 +16,48 @@ For help, type "help".
 Type "apropos word" to search for commands related to "word"...
 Reading symbols from a.out...done.
 (gdb) break main
-Breakpoint 1 at 0x772: file p3original.c, line 8.
+Breakpoint 1 at 0x772: file p3original.c, line 6.
 (gdb) r
 Starting program: /home/runner/test-1-SHRAVAN-RAO-18/a.out 
 warning: Error disabling address space randomization: Operation not permitted
 
-Breakpoint 1, main () at p3original.c:8
-8     a=input(a);
+Breakpoint 1, main () at p3original.c:6
+6   {
+(gdb) n
+8     int_input(&x,&y);
 (gdb) s
-input (a=32767) at p3original.c:14
-14  {
+int_input (a=0x7ffd12ef310c, b=0x7ffd12ef3110)
+    at p3original.c:15
+15    printf("enter two number\n");
 (gdb) n
-16    printf("enter a number\n");
-(gdb) n
-enter a number
-17    scanf("%d",&x);
+enter two number
+16    scanf("%d %d",a,b);
 (gdb) n
 n
-18    return x;
-(gdb) n
-19  }
+17  }
 (gdb) n
 main () at p3original.c:9
-9     b=input_2(b);
+9     sum(x,y,&z);
 (gdb) s
-input_2 (b=0) at p3original.c:21
-21  {
+sum (a=21997, b=317665792, c=0x7ffd12ef3114)
+    at p3original.c:20
+20    *c=a+b;
 (gdb) n
-23    printf("enter a number\n");
-(gdb) n
-enter a number
-24    scanf("%d",&y);
-(gdb) n
-25    return y;
-(gdb) n
-26  }
+21  }
 (gdb) n
 main () at p3original.c:10
-10    sum=add(a,b);
+10    output(x,y,z);
 (gdb) s
-add (a=32591, b=32591) at p3original.c:30
-30    c=a+b;
+output (a=21997, b=317665792, c=317687789)
+    at p3original.c:24
+24    printf("the sum of %d and %d is %d",a,b,c);
 (gdb) n
-31    return c;
-(gdb) n
-32  }(gdb) n
+25  }(gdb) n
 main () at p3original.c:11
-11    printf("sum of %d+%d=%d\n",a,b,sum);
+11    return 0;
 (gdb) n
-sum of 32591+32591=65182
 12  }
-(gdb) n
-__libc_start_main (main=0x55736560076a <main>, argc=1, 
-    argv=0x7fff28299ff8, init=<optimized out>, 
-    fini=<optimized out>, rtld_fini=<optimized out>, 
-    stack_end=0x7fff28299fe8) at ../csu/libc-start.c:344
-344 ../csu/libc-start.c: No such file or directory.
 (gdb) c
 Continuing.
-[Inferior 1 (process 275) exited normally]
+the sum of 21997 and 317665792 is 317687789[Inferior 1 (process 40) exited normally]
 (gdb) 
