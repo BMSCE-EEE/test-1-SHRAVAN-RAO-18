@@ -1,4 +1,6 @@
 #include<stdio.h>
+int input();
+int compare(int a,int b,int c);
 int main()
 {
   int a,b,c,larger;
@@ -6,6 +8,7 @@ int main()
   b=input();
   c=input();
   larger=compare(a,b,c);
+  printf("%d is largest of all number",larger);
   return 0;
 }
 int input()
@@ -13,28 +16,22 @@ int input()
   int x;
   printf("enter a number");
   scanf("%d",&x);
+  return x;
 }
-int compare(int p,int q,int r)
+int compare(int a,int b,int c)
 {
-  if(a>b)
+  if(a>b && a>c)
   {
-    if(a>c)
-    {
-      printf("%d is greatest of all",a);
-    }
-    else
-    printf("%d is greatest of all",c);
-    printf("%d is smallest of all",b);
+    return a;
   }
-  else if(b>c)
+  else if(b>a && b>c)
   {
-    printf("%d is greatest of all",b);
-    if(a>c)
-    {
-      printf("%d is smallest of all",c)
-    }
+    return  b;
   }
-  else
-  printf("%d is greatest of all",c);
+  else if(c>a && c>b)
+  {
+    return c;
   }
+  else 
+  printf("the numbers are same");
 }
